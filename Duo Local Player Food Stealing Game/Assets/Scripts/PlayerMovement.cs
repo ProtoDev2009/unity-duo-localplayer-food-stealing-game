@@ -31,4 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
         return inputVector;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Food"))
+        {
+            Debug.Log("I Get A Point! ");
+            // Set point for the respective player
+        }
+    }
 }

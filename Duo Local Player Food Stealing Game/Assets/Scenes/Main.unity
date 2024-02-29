@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 1049607244}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,10 +742,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc44682c9f2307241b9af09ee3a57a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardKey: 273
-  backKey: 274
-  leftKey: 276
-  rightKey: 275
+  forwardKey: 105
+  backKey: 107
+  leftKey: 106
+  rightKey: 108
   moveSpeed: 10
 --- !u!1 &1093526157
 GameObject:
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 1093526162}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,6 +917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Food: {fileID: 3616214538952145794, guid: 034f57a0ec03ffa4baae243a53f609f8, type: 3}
+  foodSpawned: {fileID: 0}
+  instantiateDelay: 2
+  destroyDelay: 3
   minX: -14
   maxX: 14
   minZ: 12.25

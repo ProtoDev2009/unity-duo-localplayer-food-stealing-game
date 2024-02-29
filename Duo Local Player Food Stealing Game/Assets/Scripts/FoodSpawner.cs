@@ -1,27 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodSpawner : MonoBehaviour
 {
     public GameObject Food;
+    private GameObject foodSpawned;
+
+    public float instantiateDelay = 2f;
+    public float destroyDelay = 3f;
 
     public float minX;
     public float maxX;
     public float minZ;
     public float maxZ;
 
-    private Vector3 SpawnPosition;
+    private Vector3 spawnPosition;
 
     private void Start()
     {
-        SpawnPosition = new Vector3(Random.Range(minX, maxX), 1.5f, Random.Range(minZ, maxZ));
-        Instantiate(Food, SpawnPosition, Quaternion.identity);
-        Debug.Log(SpawnPosition);
+        StartCoroutine(SpawnAndDestroyFood());
     }
 
-    private void Update()
+    private IEnumerator SpawnAndDestroyFood()
     {
-        //Instantiate Food At Random Positions
+        while (true)
+        {
+            yield return new WaitForSeconds(instantiateDelay);
+            SpawnFood();
+            yield return new WaitForSeconds(destroyDelay);
+            DestroyFood();
+        }
+    }
+
+    private void SpawnFood()
+    {
+        spawnPosition = new Vector3(Random.Range(minX, maxX), 1.5f, Random.Range(minZ, maxZ));
+        foodSpawned = Instantiate(Food, spawnPosition, Quaternion.identity);
+    }
+
+    private void DestroyFood()
+    {
+        if (foodSpawned != null)
+        {
+            Destroy(foodSpawned);
+            foodSpawned = null;
+        }
     }
 }
