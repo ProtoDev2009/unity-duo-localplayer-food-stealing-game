@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]private FoodSpawner foodSpawner;
+    private int points = 0;
+
     [SerializeField] KeyCode forwardKey;
     [SerializeField] KeyCode backKey;
     [SerializeField] KeyCode leftKey;
@@ -11,7 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 10f;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        // initialize food spawner
+    }
+
     void Update()
     {
         Vector3 moveDir = new Vector3(getInputVector().x, 0f, getInputVector().y);
@@ -36,8 +43,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Food"))
         {
-            Debug.Log("I Get A Point! ");
-            // Set point for the respective player
+            foodSpawner.DestroyFood();
+            points++;
+
+            Debug.Log(this.tag + " Score:" + points);
         }
     }
 }

@@ -38,7 +38,7 @@ public class FoodSpawner : MonoBehaviour
         foodSpawned = Instantiate(Food, spawnPosition, Quaternion.identity);
     }
 
-    private void DestroyFood()
+    public void DestroyFood()
     {
         if (foodSpawned != null)
         {
